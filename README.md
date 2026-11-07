@@ -17,3 +17,5 @@ Open `index.html` in a browser to use the editor. For installable-app features a
 - Responsive layout, app icon, web-app manifest, and offline caching for desktop and mobile
 
 To install, open the hosted app in your browser and choose **Install app** or **Add to Home Screen** from the browser menu. Browser support and menu wording may vary.
+
+https://pixel-art-editor-mu.vercel.app/
