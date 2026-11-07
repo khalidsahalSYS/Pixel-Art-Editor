@@ -1,0 +1,13 @@
+{
+  "name": "Pixel Art Editor",
+  "short_name": "Pixel Editor",
+  "description": "A simple workspace for creating and editing pixel art.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#11131a",
+  "theme_color": "#171923",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
