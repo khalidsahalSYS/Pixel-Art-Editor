@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171923">
+  <meta name="description" content="A simple workspace for creating and editing pixel art.">
+  <title>Pixel Art Editor</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Pixel Art Editor home">
+      <span class="brand-icon" aria-hidden="true">▦</span>
+      <span>Pixel Art Editor</span>
+    </a>
+    <div class="top-actions">
+      <button id="undo" class="icon-button" type="button" title="Undo (Ctrl/Cmd+Z)" aria-label="Undo">↶</button>
+      <button id="redo" class="icon-button" type="button" title="Redo (Ctrl/Cmd+Y)" aria-label="Redo">↷</button>
+      <button id="save" class="secondary-button" type="button">Save</button>
+      <button id="export" class="primary-button" type="button">Export PNG</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="panel tools-panel" aria-label="Drawing tools">
+      <h1>Tools</h1>
+      <div class="tool-grid">
+        <button class="tool-button active" data-tool="pencil" type="button" aria-pressed="true"><span>✎</span><small>Pencil</small></button>
+        <button class="tool-button" data-tool="eraser" type="button" aria-pressed="false"><span>▱</span><small>Eraser</small></button>
+        <button class="tool-button" data-tool="fill" type="button" aria-pressed="false"><span>▨</span><small>Fill</small></button>
+        <button class="tool-button" data-tool="picker" type="button" aria-pressed="false"><span>⌖</span><small>Picker</small></button>
+      </div>
+
+      <section class="panel-section">
+        <h2>Color</h2>
+        <label class="color-control"><input id="color" type="color" value="#6c63ff"><span id="color-value">#6C63FF</span></label>
+        <div class="palette" id="palette" aria-label="Color palette"></div>
+      </section>
+
+      <section class="panel-section">
+        <h2>Canvas</h2>
+        <div class="size-fields">
+          <label>Width<input id="canvas-width" type="number" min="8" max="128" value="32"></label>
+          <span>×</span>
+          <label>Height<input id="canvas-height" type="number" min="8" max="128" value="32"></label>
+        </div>
+        <button id="resize" class="secondary-button full-width" type="button">Resize canvas</button>
+        <label class="check-row"><input id="show-grid" type="checkbox" checked> Show pixel grid</label>
+        <label class="range-row">Zoom <span id="zoom-value">100%</span><input id="zoom" type="range" min="50" max="200" value="100"></label>
+      </section>
+      <p class="hint">Tip: drag on the canvas to draw. Your work is saved in this browser.</p>
+    </aside>
+
+    <section class="editor-area" aria-label="Pixel art canvas">
+      <div class="canvas-heading"><div><h2>Your canvas</h2><p id="canvas-info">32 × 32 pixels</p></div><button id="clear" class="text-button" type="button">Clear canvas</button></div>
+      <div class="canvas-stage">
+        <canvas id="art" width="32" height="32" aria-label="Pixel art drawing area" role="img"></canvas>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite">Ready to create.</div>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
